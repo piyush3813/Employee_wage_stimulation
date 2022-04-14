@@ -9,7 +9,10 @@ public class EmployeeWageComputation {
     public static void main(String[] args) {
         BasicConfigurator.configure();
         logger.info("Welcome To Employee Wage Computation ");
+        calculatewage();
+    }
 
+    public static void calculatewage(){
         final int FULL_TIME = 2;
         final int PART_TIME = 1;
         final int WAGE_PER_HRS = 20;
@@ -45,7 +48,9 @@ public class EmployeeWageComputation {
         }
         logger.info("total wage = "+total_wage);
     }
+
 }
+
 
 
 
