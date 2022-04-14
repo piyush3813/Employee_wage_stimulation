@@ -30,7 +30,8 @@ public class EmployeeWageComputation {
             default:
                 logger.info("the employee is absent full time ");
         }
-        int wage = working_hrs * WAGE_PER_HRS;
-        logger.info("employee wage per day is - " + wage);
+        int wage_per_day = working_hrs * WAGE_PER_HRS;
+        logger.info("employee wage per day is - " + wage_per_day);
+        logger.info("employee wage per month with 20 working days - "+wage_per_day *20);
     }
 }
