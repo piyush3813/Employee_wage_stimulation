@@ -7,7 +7,8 @@ public class EmployeeWageComputation {
     static Logger logger = Logger.getLogger(EmployeeWageComputation.class);
 
     /**
-    */ class constants
+     * class constants
+    */
 
     static final int PART_TIME = 1;
     static final int FULL_TIME = 2;
