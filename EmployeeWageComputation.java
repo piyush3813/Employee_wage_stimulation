@@ -3,6 +3,12 @@ package com.bridgelabz;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
+interface IntEmployeeWageComputation{
+    public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs);
+
+    public void calculateWage();
+
+}
 class CompanyEmpWage{
     Logger logger = Logger.getLogger(CompanyEmpWage.class);
     /**
@@ -43,7 +49,8 @@ class CompanyEmpWage{
 }
 
 
-public class EmployeeWageComputation {
+ class EmployeeWageComputation implements IntEmployeeWageComputation
+ {
     static Logger logger = Logger.getLogger(EmployeeWageComputation.class);
 
     /**
@@ -56,14 +63,14 @@ public class EmployeeWageComputation {
     int noOfCompanies,index;
     CompanyEmpWage[] companies;
 
-    EmployeeWageComputation(int noOfCompanies) {
+    public EmployeeWageComputation(int noOfCompanies) {
         this.noOfCompanies=noOfCompanies;
         companies = new CompanyEmpWage[noOfCompanies];
         index=0;
 
     }
 
-    void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs)
+    public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs)
     {
         companies[index++] = new CompanyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHrs);
     }
@@ -85,16 +92,16 @@ public class EmployeeWageComputation {
         }
     }
 
-    void calculatewage()
+    public void calculateWage()
     {
         for (CompanyEmpWage company : companies)
-        {   int totalWage = calculatewage(company);
+        {   int totalWage = calculateWage(company);
             company.setTotalEmployeeWage(totalWage);
             logger.info(company);
         }
     }
 
-     int calculatewage(CompanyEmpWage companyEmpWage) {
+     int calculateWage(CompanyEmpWage companyEmpWage) {
         logger.info("Computation of total wage of " + companyEmpWage.COMPANY_NAME + " employee");
 
         logger.info( "           "+"Day"+"            "+ "Workinghrs"+"      "+ "Wage"+"          "+"Total working hrs");
@@ -126,7 +133,7 @@ public class EmployeeWageComputation {
         employeeWageComputation.addCompany("Google", 5, 40, 170);
         employeeWageComputation.addCompany("Apple", 9, 10, 70);
 
-        employeeWageComputation.calculatewage();
+        employeeWageComputation.calculateWage();
 
 
 
