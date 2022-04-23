@@ -3,6 +3,8 @@ package com.bridgelabz;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
+import java.util.ArrayList;
+
 interface IntEmployeeWageComputation{
     public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs);
 
@@ -60,19 +62,19 @@ class CompanyEmpWage{
     public static final int PART_TIME = 1;
     public static final int FULL_TIME = 2;
 
-    int noOfCompanies,index;
-    CompanyEmpWage[] companies;
+    ArrayList<CompanyEmpWage> companies;
 
-    public EmployeeWageComputation(int noOfCompanies) {
-        this.noOfCompanies=noOfCompanies;
-        companies = new CompanyEmpWage[noOfCompanies];
-        index=0;
+
+    public EmployeeWageComputation() {
+
+        companies = new ArrayList<>();
 
     }
 
     public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs)
     {
-        companies[index++] = new CompanyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHrs);
+        CompanyEmpWage company = new CompanyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHrs);
+        companies.add(company);
     }
 
     int generateEmployeeType() {
@@ -128,7 +130,7 @@ class CompanyEmpWage{
  * creating new object for parametrized constructor .
  */
 
-        EmployeeWageComputation employeeWageComputation = new EmployeeWageComputation(3);
+        EmployeeWageComputation employeeWageComputation = new EmployeeWageComputation();
         employeeWageComputation.addCompany("Microsoft", 4, 30, 100);
         employeeWageComputation.addCompany("Google", 5, 40, 170);
         employeeWageComputation.addCompany("Apple", 9, 10, 70);
